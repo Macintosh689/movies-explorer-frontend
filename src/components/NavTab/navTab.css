@@ -1,0 +1,114 @@
+.header__nav-link_type_main-active {
+  color: #fff;
+  text-align: right;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+.header__nav-link_type_profile {
+  color: #fff;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.header__nav-link-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-left: 30px;
+}
+
+.header__nav-link-image {
+  width: 10px;
+  height: 10px;
+  border: 10px solid #313131;
+  border-radius: 6px;
+  background-color: #313131;
+  cursor: pointer;
+}
+
+.nav-overlay {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-overlay {
+    display: flex;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.3);
+    width: 100%;
+  }
+  .navtab-burger {
+    background: #202020;
+    width: 520px;
+    min-height: 100vh;
+    /* padding: 159px 0 92px; */
+    display: flex;
+    margin: 0;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  .nav-wrapper {
+    flex: 1 1 auto;
+  }
+  .header__nav-list_type_main-burger {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    margin: 159px 0 0;
+  }
+  .header__list-item_type_main-burger {
+    margin: 0;
+    padding: 0;
+  }
+  .header__nav-link_type_main-burger {
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .header__nav-link_type_main-active-burger {
+    border-bottom: 2px solid #fff;
+    padding-bottom: 4px;
+  }
+  .header__nav-link-wrapper {
+    margin: 0 0 92px;
+  }
+  .burger__close-button {
+    background-image: url(../../images/close-button.svg);
+    width: 22px;
+    height: 22px;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    background-color: inherit;
+    border: none;
+    padding: 0;
+    margin: 0;
+    top: 22px;
+    right: 22px;
+  }
+}
+
+@media screen and (max-width:320px) {
+  .navtab-burger {
+    width: 100%;
+  }
+}

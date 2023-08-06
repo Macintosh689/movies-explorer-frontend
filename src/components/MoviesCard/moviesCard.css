@@ -1,0 +1,186 @@
+.movie__container {
+  border-radius: 6px;
+  background: #222;
+  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.08);
+  max-width: 360px;
+  margin: 0;
+  padding-bottom: 18px;
+}
+
+@media screen and (max-width: 1024px) {
+  .movie__container {
+    max-width: 342px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .movie__container {
+    max-width: 300px;
+    padding-bottom: 14px;
+  }
+}
+
+.movie__caption {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 0 0;
+  margin: 0 18px 0;
+}
+
+@media screen and (max-width: 767px) {
+  .movie__caption {
+    padding: 14px 0 0;
+    margin: 0 14px 0;
+  }
+}
+
+.movie__name {
+  color: #fff;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding: 0;
+  margin: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .movie__name {
+    font-size: 12px;
+  }
+}
+
+.movie__duration {
+  color: #8b8b8b;
+  text-align: right;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  margin: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .movie__duration {
+    font-size: 10px;
+  }
+}
+
+.movie__image {
+  width: 360px;
+  height: 200px;
+  margin: 18px 0;
+  display: block;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 1279px) {
+  .movie__image {
+    height: 190px;
+    width: 342px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .movie__image {
+    height: 168px;
+    margin: 14px 0;
+    width: 300px;
+  }
+}
+
+.movie__save-button {
+  width: 100px;
+  height: 29px;
+  border-radius: 30px;
+  border: none;
+  background-color: #313131;
+  color: #fff;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 11px;
+  padding: 0;
+  margin: 0 auto;
+  display: block;
+  cursor: pointer;
+}
+
+.movie__saved-button {
+  background: url(../../images/saved-icon.svg) no-repeat 50%;
+  color: transparent;
+  background-color: #ee3465;
+  width: 100px;
+  height: 29px;
+  border-radius: 30px;
+  border: none;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 11px;
+  padding: 0;
+  margin: 0 auto;
+  display: block;
+  cursor: pointer;
+}
+
+.movies__button {
+  border-radius: 6px;
+  background: #2f2f2f;
+  border: none;
+  color: #fff;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  width: 1140px;
+  padding: 0;
+  height: 36px;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+@media screen and (max-width: 1024px) {
+  .movies__button {
+    width: 708px;
+    margin-top: 50px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .movies__button {
+    width: 300px;
+  }
+}
+
+.movie__delete-button {
+  background: url(../../images/delete-icon.svg) no-repeat 50%;
+  background-color: #313131;
+  color: transparent;
+  width: 100px;
+  height: 29px;
+  border-radius: 30px;
+  border: none;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 11px;
+  padding: 0;
+  margin: 0 auto;
+  display: block;
+  cursor: pointer;
+}
+
+.movie__added-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  row-gap: 30px;
+  column-gap: 22px;
+  margin: 0 auto;
+}
+
