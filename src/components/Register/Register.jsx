@@ -1,6 +1,6 @@
 import React from "react";
 import "./register.css";
-import headerLogo from "../../images/header-logo.png";
+import headerLogo from "../../images/header-logo.svg";
 
 import { Link } from "react-router-dom";
 
@@ -9,7 +9,7 @@ export default function Login({ onLogin }) {
     <div className="auth">
       <form className="auth-form">
         <Link to="/">
-          <img className="header__logo" src={headerLogo} alt="логотип" to="/" />
+          <img className="header__logo header__logo_type_auth" src={headerLogo} alt="логотип" to="/" />
         </Link>
         <h2 className="auth-form__title">Добро пожаловать!</h2>
         <span className="auth-form__span-caption">Имя</span>
@@ -20,6 +20,7 @@ export default function Login({ onLogin }) {
           name="name"
           minLength="2"
           maxLength="40"
+          placeholder="Имя"
           required
         />
         <span

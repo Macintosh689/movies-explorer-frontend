@@ -25,7 +25,7 @@ export default function MoviesCard() {
             <h3 className="movie__name">В погоне за Бенкси</h3>
             <p className="movie__duration">27 минут</p>
           </div>
-          <img src={moviesCard1} alt="" className="movie__image" />
+          <img src={moviesCard1} alt="изображение карточки фильма" className="movie__image" />
           <button className="movie__saved-button button">сохранить</button>
         </div>
       </div>
@@ -35,7 +35,7 @@ export default function MoviesCard() {
             <h3 className="movie__name">В погоне за Бенкси</h3>
             <p className="movie__duration">27 минут</p>
           </div>
-          <img src={moviesCard2} alt="" className="movie__image" />
+          <img src={moviesCard2} alt="изображение карточки фильма" className="movie__image" />
           <button className="movie__saved-button button">сохранить</button>
         </div>
       </div>
@@ -45,7 +45,7 @@ export default function MoviesCard() {
             <h3 className="movie__name">В погоне за Бенкси</h3>
             <p className="movie__duration">27 минут</p>
           </div>
-          <img src={moviesCard3} alt="" className="movie__image" />
+          <img src={moviesCard3} alt="изображение карточки фильма" className="movie__image" />
           <button className="movie__save-button button">сохранить</button>
         </div>
       </div>
@@ -55,7 +55,7 @@ export default function MoviesCard() {
             <h3 className="movie__name">В погоне за Бенкси</h3>
             <p className="movie__duration">27 минут</p>
           </div>
-          <img src={moviesCard4} alt="" className="movie__image" />
+          <img src={moviesCard4} alt="изображение карточки фильма" className="movie__image" />
           <button className="movie__save-button button">сохранить</button>
         </div>
       </div>
@@ -65,7 +65,7 @@ export default function MoviesCard() {
             <h3 className="movie__name">В погоне за Бенкси</h3>
             <p className="movie__duration">27 минут</p>
           </div>
-          <img src={moviesCard5} alt="" className="movie__image" />
+          <img src={moviesCard5} alt="изображение карточки фильма" className="movie__image" />
           <button className="movie__save-button button">сохранить</button>
         </div>
       </div>
@@ -75,7 +75,7 @@ export default function MoviesCard() {
             <h3 className="movie__name">В погоне за Бенкси</h3>
             <p className="movie__duration">27 минут</p>
           </div>
-          <img src={moviesCard6} alt="" className="movie__image" />
+          <img src={moviesCard6} alt="изображение карточки фильма" className="movie__image" />
           <button className="movie__saved-button button">сохранить</button>
         </div>
       </div>
@@ -85,7 +85,7 @@ export default function MoviesCard() {
             <h3 className="movie__name">В погоне за Бенкси</h3>
             <p className="movie__duration">27 минут</p>
           </div>
-          <img src={moviesCard7} alt="" className="movie__image" />
+          <img src={moviesCard7} alt="изображение карточки фильма" className="movie__image" />
           <button className="movie__saved-button button">сохранить</button>
         </div>
       </div>
@@ -95,7 +95,7 @@ export default function MoviesCard() {
             <h3 className="movie__name">В погоне за Бенкси</h3>
             <p className="movie__duration">27 минут</p>
           </div>
-          <img src={moviesCard8} alt="" className="movie__image" />
+          <img src={moviesCard8} alt="изображение карточки фильма" className="movie__image" />
           <button className="movie__save-button button">сохранить</button>
         </div>
       </div>
@@ -105,7 +105,7 @@ export default function MoviesCard() {
             <h3 className="movie__name">В погоне за Бенкси</h3>
             <p className="movie__duration">27 минут</p>
           </div>
-          <img src={moviesCard9} alt="" className="movie__image" />
+          <img src={moviesCard9} alt="изображение карточки фильма" className="movie__image" />
           <button className="movie__save-button button">сохранить</button>
         </div>
       </div>
@@ -115,7 +115,7 @@ export default function MoviesCard() {
             <h3 className="movie__name">В погоне за Бенкси</h3>
             <p className="movie__duration">27 минут</p>
           </div>
-          <img src={moviesCard10} alt="" className="movie__image" />
+          <img src={moviesCard10} alt="изображение карточки фильма" className="movie__image" />
           <button className="movie__save-button button">сохранить</button>
         </div>
       </div>
@@ -125,7 +125,7 @@ export default function MoviesCard() {
             <h3 className="movie__name">В погоне за Бенкси</h3>
             <p className="movie__duration">27 минут</p>
           </div>
-          <img src={moviesCard11} alt="" className="movie__image" />
+          <img src={moviesCard11} alt="изображение карточки фильма" className="movie__image" />
           <button className="movie__saved-button button">сохранить</button>
         </div>
       </div>
@@ -135,7 +135,7 @@ export default function MoviesCard() {
             <h3 className="movie__name">В погоне за Бенкси</h3>
             <p className="movie__duration">27 минут</p>
           </div>
-          <img src={moviesCard12} alt="" className="movie__image" />
+          <img src={moviesCard12} alt="изображение карточки фильма" className="movie__image" />
           <button className="movie__save-button button">сохранить</button>
         </div>
       </div>
@@ -151,7 +151,7 @@ export default function MoviesCard() {
               <h3 className="movie__name">В погоне за Бенкси</h3>
               <p className="movie__duration">27 минут</p>
             </div>
-            <img src={moviesCard1} alt="" className="movie__image" />
+            <img src={moviesCard1} alt="изображение карточки фильма" className="movie__image" />
             <button className="movie__delete-button button">сохранить</button>
           </div>
         </div>
@@ -161,7 +161,7 @@ export default function MoviesCard() {
               <h3 className="movie__name">В погоне за Бенкси</h3>
               <p className="movie__duration">27 минут</p>
             </div>
-            <img src={moviesCard2} alt="" className="movie__image" />
+            <img src={moviesCard2} alt="изображение карточки фильма" className="movie__image" />
             <button className="movie__delete-button button">сохранить</button>
           </div>
         </div>
@@ -171,7 +171,7 @@ export default function MoviesCard() {
               <h3 className="movie__name">В погоне за Бенкси</h3>
               <p className="movie__duration">27 минут</p>
             </div>
-            <img src={moviesCard3} alt="" className="movie__image" />
+            <img src={moviesCard3} alt="изображение карточки фильма" className="movie__image" />
             <button className="movie__delete-button button">сохранить</button>
           </div>
         </div>

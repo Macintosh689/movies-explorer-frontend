@@ -31,7 +31,7 @@ export default function NavTab({ onClose }) {
             >
               Аккаунт
             </Link>
-            <img src={profileIcon} alt="" className="header__nav-link-image" />
+            <img src={profileIcon} alt="иконка профиля" className="header__nav-link-image" />
           </div>
         </li>
       </ul>
@@ -78,7 +78,7 @@ export default function NavTab({ onClose }) {
             >
               Аккаунт
             </Link>
-            <img src={profileIcon} alt="" className="header__nav-link-image" />
+            <img src={profileIcon} alt="иконка профиля" className="header__nav-link-image" />
           </div>
         </div>
       </nav>

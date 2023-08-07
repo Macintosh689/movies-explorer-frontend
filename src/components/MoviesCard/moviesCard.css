@@ -182,5 +182,17 @@
   row-gap: 30px;
   column-gap: 22px;
   margin: 0 auto;
+  max-width: 1140px;
 }
 
+
+@media screen and (min-width: 768px) and (max-width: 1208px) {
+  .movie__added-wrapper {
+    max-width: 708px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .movie__added-wrapper {
+    max-width: 300px;
+  }
+}

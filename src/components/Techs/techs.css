@@ -18,7 +18,7 @@
  }
  
  
- .techs__title {
+ .techs__heading {
    color: #fff;
    text-align: center;
    font-size: 50px;
@@ -30,13 +30,13 @@
  }
  
  @media screen and (min-width: 768px) and (max-width: 1024px) {
-   .techs__title {
+   .techs__heading {
      margin: 80px 22px;
    }
  }
  
  @media screen and (max-width: 767px){
-   .techs__title {
+   .techs__heading {
      font-size: 30px;
      letter-spacing: -1.2px;
      line-height: normal;
