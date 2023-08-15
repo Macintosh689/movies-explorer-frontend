@@ -1,58 +1,135 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import "./profile.css";
+import { useDispatch, useSelector } from "react-redux";
+import { setToken } from "../../redux/slices/userReducer";
+import * as Yup from "yup";
+import { Link, useNavigate } from "react-router-dom";
+
+import { Form, Formik, Field, ErrorMessage } from "formik";
+import { editUserInfo, getUserInfo } from "../../utils/MainApi";
 
 export default function Profile() {
+  const token = useSelector((state) => state.user.token);
+  const [userInfo, setUserInfo] = useState({});
+  const dispatch = useDispatch();
+  useEffect(() => {
+    getUserInfo(token)
+      .then((res) => {
+        setUserInfo(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  function logout(event) {
+    event.preventDefault();
+    dispatch(setToken(""));
+  }
+  const emailSchema =
+    /^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$/;
+  const initialValues = {
+    name: userInfo?.name || "",
+    email: userInfo?.email || "",
+  };
+  const profileSchema = Yup.object().shape({
+    name: Yup.string("Введите корректное имя")
+      .min(2, "Введите не менее 2 символов")
+      .max(15, "Введите не более 15 символов")
+      .required("Обязательное поле"),
+    email: Yup.string("Введите корректный Email")
+      .matches(emailSchema, "Введите корректный Email")
+      .min(5, "Введите не менее 5 символов")
+      .max(30, "Введите не более 30 символов")
+      .required("Обязательное поле"),
+  });
+  const onSubmit = (values) => {
+    editUserInfo(token, values)
+      .then((data) => {
+        console.log(data);
+        alert("Сохранено");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div>
       <Header />
-      <form action="" className="profile__form">
-        <h2 className="profile__title">Привет, Виталий!</h2>
-        <label htmlFor="" className="profile__label">
-          <span className="profile-form__span-caption">Имя</span>
-          <input
-            id="input-name"
-            type="name"
-            className="profile-form__input profile-form__input_type_name"
-            name="name"
-            minLength="2"
-            maxLength="40"
-            required
-          />
-          <span
-            className="profile-form__span-error"
-            id="auth-form__span-error"
-          ></span>
-        </label>
-        <label htmlFor="" className="profile__label">
-          <span className="profile-form__span-caption">E-mail</span>
-          <input
-            id="input-password"
-            type="email"
-            className="profile-form__input profile-form__input_type_email"
-            name="email"
-            minLength="2"
-            maxLength="200"
-            required
-          />
-          <span
-            className="profile-form__span-error"
-            id="auth-form__span-error"
-          ></span>
-        </label>
-        <button className="profile-form__button profile-form__button-edit button" type="submit">
-          Редактировать
-        </button>
-        <button className="profile-form__button profile-form__button-logout button" type="submit">
-          Выйти из аккаунта
-        </button>
-        {/* <button className="profile-form__button-save button" type="submit">
+      <Formik
+        initialValues={initialValues}
+        validationSchema={profileSchema}
+        onSubmit={onSubmit}
+        enableReinitialize={true}
+      >
+        {(formik) => {
+          const { isValid, dirty, errors, touched } = formik;
+          return (
+            <Form action="" className="profile__form">
+              <h2 className="profile__title">
+                Привет, {userInfo?.name ? userInfo?.name : ""}!
+              </h2>
+              <label htmlFor="" className="profile__label">
+                <span className="profile-form__span-caption">Имя</span>
+                <Field
+                  id="input-name"
+                  type="name"
+                  className={`profile-form__input profile-form__input_type_name ${
+                    errors.name && touched.name
+                      ? "auth-form__input_type_error"
+                      : ""
+                  }`}
+                  name="name"
+                />
+              </label>
+              <ErrorMessage
+                component={"span"}
+                className="profile-form__span-error"
+                id="auth-form__span-error"
+                name="name"
+              />
+              <label htmlFor="" className="profile__label">
+                <span className="profile-form__span-caption">E-mail</span>
+                <Field
+                  id="input-password"
+                  type="email"
+                  className={`profile-form__input profile-form__input_type_email ${
+                    errors.email && touched.email
+                      ? "auth-form__input_type_error"
+                      : ""
+                  }`}
+                  name="email"
+                />
+              </label>
+              <ErrorMessage
+                component={"span"}
+                className="profile-form__span-error"
+                id="auth-form__span-error"
+                name="email"
+              />
+              <button
+                className="profile-form__button profile-form__button-edit button"
+                type="submit"
+                disabled={!(dirty && isValid)}
+              >
+                Редактировать
+              </button>
+              <button
+                className="profile-form__button profile-form__button-logout button"
+                type="submit"
+                onClick={logout}
+              >
+                Выйти из аккаунта
+              </button>
+              {/* <button className="profile-form__button-save button" type="submit">
           Сохранить
         </button> */}
 
-{/* для переключения состояния профиля на данном этапе необходимо закомментировать кнопки "редактировать" и "выйти из аккаунта"*, а затем раскомментировать кнопку "сохранить" */}
-      </form>
+              {/* для переключения состояния профиля на данном этапе необходимо закомментировать кнопки "редактировать" и "выйти из аккаунта"*, а затем раскомментировать кнопку "сохранить" */}
+            </Form>
+          );
+        }}
+      </Formik>
     </div>
   );
 }
-

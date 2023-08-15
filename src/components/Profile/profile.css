@@ -113,16 +113,18 @@
 
 .profile-form__button:disabled {
   opacity: 0.6;
-  background-color: #f8f8f8;
   color: #c2c2c2;
   pointer-events: none;
+  display: inline;
 }
 
 .profile-form__span-error {
-  height: 12px;
-  margin-top: 6px;
-  display: block;
-  padding: 0;
+  color: #ee3465;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
 }
 
 @media screen and (max-width: 767px) {

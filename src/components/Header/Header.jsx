@@ -4,20 +4,14 @@ import headerLogo from "../../images/header-logo.svg";
 import NavTab from "../NavTab/NavTab.jsx";
 import headerBurger from "../../images/header-burger.svg";
 import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Header() {
-  // для переключения состояния хедера между лэндингом и мэйн-пэйдж необходимо поменять 'true' на 'false' в переменной 'auth'
-  const location = useLocation();
-  useEffect(() => {
-    if (location.pathname === "/" ) {
-      setAuth(true);
-    } else {
-      setAuth(false);
-    }
-  }, [location])
-  const [auth, setAuth] = useState(false);
+  
+  
+  const token = useSelector((state) => state.user.token);
   const [open, setOpen] = useState(false);
-  return auth ? (
+  return !token ? (
     <header className="header header_type_landing">
       <Link to="/">
         <img className="header__logo" src={headerLogo} alt="логотип" to="/" />

@@ -1,181 +1,128 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./moviesCard.css";
 import moviesCard1 from "../../images/movies-card-1.png";
 import moviesCard2 from "../../images/movies-card-2.png";
 import moviesCard3 from "../../images/movies-card-3.png";
-import moviesCard4 from "../../images/movies-card-4.png";
-import moviesCard5 from "../../images/movies-card-5.png";
-import moviesCard6 from "../../images/movies-card-6.png";
-import moviesCard7 from "../../images/movies-card-7.png";
-import moviesCard8 from "../../images/movies-card-8.png";
-import moviesCard9 from "../../images/movies-card-9.png";
-import moviesCard10 from "../../images/movies-card-10.png";
-import moviesCard11 from "../../images/movies-card-11.png";
-import moviesCard12 from "../../images/movies-card-12.png";
+
 import { useLocation } from "react-router-dom";
+import { getTimeFromMins } from "../../utils/Constants";
+import { useSelector } from "react-redux";
+import { dislikeMovie, getAllLikeMovies, likeMovie } from "../../utils/MainApi";
 
-export default function MoviesCard() {
+export default function MoviesCard({ movie }) {
   const location = useLocation();
+  const [isLike, setIsLike] = useState(false);
 
+  const token = useSelector((state) => state.user.token);
+  useEffect(() => {
+    getAllLikeMovies(token)
+      .then((movies) => {
+        if (location.pathname === "/movies") {
+          setIsLike(movies.find((elem) => elem.movieId === movie.id));
+        }else {
+          setIsLike(movies.find((elem) => elem.movieId === movie.movieId));
+        }
+        
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [token]);
+console.log(movie);
+  function handleLike() {
+    if (isLike) {
+      console.log(isLike);
+      dislikeMovie(token, isLike._id).then((res) => {
+        setIsLike(false);
+      });
+    } else {
+      likeMovie(token, {
+        country: movie.country,
+        director: movie.director,
+        duration: movie.duration,
+        year: movie.year,
+        description: movie.description,
+        image: `https://api.nomoreparties.co${movie.image.url}`,
+        trailerLink: movie.trailerLink,
+        thumbnail: `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`,
+        movieId: movie.id,
+        nameRU: movie.nameRU,
+        nameEN: movie.nameEN,
+      })
+        .then((res) => {
+          console.log(res);
+          setIsLike(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }
   return location.pathname === "/movies" ? (
     <>
       <div className="movie__card">
         <div className="movie__container">
           <div className="movie__caption">
-            <h3 className="movie__name">В погоне за Бенкси</h3>
-            <p className="movie__duration">27 минут</p>
+            <h3 className="movie__name">{movie.nameRU}</h3>
+            <p className="movie__duration">{getTimeFromMins(movie.duration)}</p>
           </div>
-          <img src={moviesCard1} alt="изображение карточки фильма" className="movie__image" />
-          <button className="movie__saved-button button">сохранить</button>
+          <a
+            href={movie.trailerLink}
+            className="movie__link"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img
+              src={`https://api.nomoreparties.co${movie.image.url}`}
+              alt="изображение карточки фильма"
+              className="movie__image"
+            />
+          </a>
+          {isLike ? (
+            <button className="movie__saved-button button" onClick={handleLike}>
+              сохранить
+            </button>
+          ) : (
+            <button className="movie__save-button button" onClick={handleLike}>
+              сохранить
+            </button>
+          )}
         </div>
       </div>
-      <div className="movie__card">
-        <div className="movie__container">
-          <div className="movie__caption">
-            <h3 className="movie__name">В погоне за Бенкси</h3>
-            <p className="movie__duration">27 минут</p>
-          </div>
-          <img src={moviesCard2} alt="изображение карточки фильма" className="movie__image" />
-          <button className="movie__saved-button button">сохранить</button>
-        </div>
-      </div>
-      <div className="movie__card">
-        <div className="movie__container">
-          <div className="movie__caption">
-            <h3 className="movie__name">В погоне за Бенкси</h3>
-            <p className="movie__duration">27 минут</p>
-          </div>
-          <img src={moviesCard3} alt="изображение карточки фильма" className="movie__image" />
-          <button className="movie__save-button button">сохранить</button>
-        </div>
-      </div>
-      <div className="movie__card">
-        <div className="movie__container">
-          <div className="movie__caption">
-            <h3 className="movie__name">В погоне за Бенкси</h3>
-            <p className="movie__duration">27 минут</p>
-          </div>
-          <img src={moviesCard4} alt="изображение карточки фильма" className="movie__image" />
-          <button className="movie__save-button button">сохранить</button>
-        </div>
-      </div>
-      <div className="movie__card">
-        <div className="movie__container">
-          <div className="movie__caption">
-            <h3 className="movie__name">В погоне за Бенкси</h3>
-            <p className="movie__duration">27 минут</p>
-          </div>
-          <img src={moviesCard5} alt="изображение карточки фильма" className="movie__image" />
-          <button className="movie__save-button button">сохранить</button>
-        </div>
-      </div>
-      <div className="movie__card">
-        <div className="movie__container">
-          <div className="movie__caption">
-            <h3 className="movie__name">В погоне за Бенкси</h3>
-            <p className="movie__duration">27 минут</p>
-          </div>
-          <img src={moviesCard6} alt="изображение карточки фильма" className="movie__image" />
-          <button className="movie__saved-button button">сохранить</button>
-        </div>
-      </div>
-      <div className="movie__card">
-        <div className="movie__container">
-          <div className="movie__caption">
-            <h3 className="movie__name">В погоне за Бенкси</h3>
-            <p className="movie__duration">27 минут</p>
-          </div>
-          <img src={moviesCard7} alt="изображение карточки фильма" className="movie__image" />
-          <button className="movie__saved-button button">сохранить</button>
-        </div>
-      </div>
-      <div className="movie__card">
-        <div className="movie__container">
-          <div className="movie__caption">
-            <h3 className="movie__name">В погоне за Бенкси</h3>
-            <p className="movie__duration">27 минут</p>
-          </div>
-          <img src={moviesCard8} alt="изображение карточки фильма" className="movie__image" />
-          <button className="movie__save-button button">сохранить</button>
-        </div>
-      </div>
-      <div className="movie__card">
-        <div className="movie__container">
-          <div className="movie__caption">
-            <h3 className="movie__name">В погоне за Бенкси</h3>
-            <p className="movie__duration">27 минут</p>
-          </div>
-          <img src={moviesCard9} alt="изображение карточки фильма" className="movie__image" />
-          <button className="movie__save-button button">сохранить</button>
-        </div>
-      </div>
-      <div className="movie__card">
-        <div className="movie__container">
-          <div className="movie__caption">
-            <h3 className="movie__name">В погоне за Бенкси</h3>
-            <p className="movie__duration">27 минут</p>
-          </div>
-          <img src={moviesCard10} alt="изображение карточки фильма" className="movie__image" />
-          <button className="movie__save-button button">сохранить</button>
-        </div>
-      </div>
-      <div className="movie__card">
-        <div className="movie__container">
-          <div className="movie__caption">
-            <h3 className="movie__name">В погоне за Бенкси</h3>
-            <p className="movie__duration">27 минут</p>
-          </div>
-          <img src={moviesCard11} alt="изображение карточки фильма" className="movie__image" />
-          <button className="movie__saved-button button">сохранить</button>
-        </div>
-      </div>
-      <div className="movie__card">
-        <div className="movie__container">
-          <div className="movie__caption">
-            <h3 className="movie__name">В погоне за Бенкси</h3>
-            <p className="movie__duration">27 минут</p>
-          </div>
-          <img src={moviesCard12} alt="изображение карточки фильма" className="movie__image" />
-          <button className="movie__save-button button">сохранить</button>
-        </div>
-      </div>
-
-      <button className="movies__button button">Ещё</button>
     </>
   ) : (
     <>
-      <div className="movie__added-wrapper">
+      {isLike && (
         <div className="movie__card">
           <div className="movie__container">
             <div className="movie__caption">
-              <h3 className="movie__name">В погоне за Бенкси</h3>
-              <p className="movie__duration">27 минут</p>
+              <h3 className="movie__name">{movie.nameRU}</h3>
+              <p className="movie__duration">
+                {getTimeFromMins(movie.duration)}
+              </p>
             </div>
-            <img src={moviesCard1} alt="изображение карточки фильма" className="movie__image" />
-            <button className="movie__delete-button button">сохранить</button>
+            <a
+              href={movie.trailerLink}
+              className="movie__link"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src={movie.image}
+                alt="изображение карточки фильма"
+                className="movie__image"
+              />
+            </a>
+
+            <button
+              className="movie__delete-button button"
+              onClick={handleLike}
+            >
+              сохранить
+            </button>
           </div>
         </div>
-        <div className="movie__card">
-          <div className="movie__container">
-            <div className="movie__caption">
-              <h3 className="movie__name">В погоне за Бенкси</h3>
-              <p className="movie__duration">27 минут</p>
-            </div>
-            <img src={moviesCard2} alt="изображение карточки фильма" className="movie__image" />
-            <button className="movie__delete-button button">сохранить</button>
-          </div>
-        </div>
-        <div className="movie__card">
-          <div className="movie__container">
-            <div className="movie__caption">
-              <h3 className="movie__name">В погоне за Бенкси</h3>
-              <p className="movie__duration">27 минут</p>
-            </div>
-            <img src={moviesCard3} alt="изображение карточки фильма" className="movie__image" />
-            <button className="movie__delete-button button">сохранить</button>
-          </div>
-        </div>
-      </div>
+      )}
     </>
   );
 }
