@@ -4,6 +4,6 @@
 
 [Макет Figma](https://www.figma.com/file/4L3haNvCohcqtbgMWJfrq6/dark-4?type=design&mode=design&t=ZIIwMDOHdFZZ05g3-0) . Название макета " dark-4 " .
 
-// для переключения состояния хедера между лэндингом и мэйн-пэйдж необходимо поменять 'false' на 'true' в переменной 'auth'.
+[ссылка на пул реквест](https://github.com/Macintosh689/movies-explorer-frontend/pull/2)
 
-// для переключения состояния профиля на данном этапе необходимо закомментировать кнопки "редактировать" и "выйти из аккаунта"\*, а затем раскомментировать кнопку "сохранить".
+[Ссылка на задеплоенный на сервере проект](https://moviesmacintosh689.nomoreparties.co/)
