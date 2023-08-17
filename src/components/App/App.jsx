@@ -11,6 +11,7 @@ import { getAllMovies } from "../../utils/MoviesApi";
 import { useDispatch, useSelector } from "react-redux";
 import { setAllMovies, setError } from "../../redux/slices/movieReducer";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import ProtectedAuth from "../ProtectedAuth/ProtectedAuth";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -32,8 +33,8 @@ export default function App() {
         <Route path="/movies" element={<ProtectedRoute><Movies /></ProtectedRoute>} />
         <Route path="/saved-movies" element={<ProtectedRoute><SavedMovies /></ProtectedRoute>} />
         <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-        <Route path="/signin" element={<Login />} />
-        <Route path="/signup" element={<Register />} />
+        <Route path="/signin" element={<ProtectedAuth><Login /></ProtectedAuth>} />
+        <Route path="/signup" element={<ProtectedAuth><Register /></ProtectedAuth>} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </div>

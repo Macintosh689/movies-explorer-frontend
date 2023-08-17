@@ -8,7 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Form, Formik, Field, ErrorMessage } from "formik";
 import { login, register } from "../../utils/MainApi";
 import { useDispatch } from "react-redux";
-import { setToken } from "../../redux/slices/userReducer";
+import { setToken, setUserInfo } from "../../redux/slices/userReducer";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -37,7 +37,7 @@ export default function Login() {
         navigate("/movies");
       })
       .catch((err) => {
-        console.log(err);
+        alert(err?.message);
       });
   };
   return (

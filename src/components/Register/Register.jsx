@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Form,Formik, Field, ErrorMessage } from "formik";
 import { login, register } from "../../utils/MainApi";
 import { useDispatch } from "react-redux";
-import { setToken } from "../../redux/slices/userReducer";
+import { setToken, setUserInfo } from "../../redux/slices/userReducer";
 
 export default function Register() {
   const dispatch = useDispatch();
@@ -37,15 +37,16 @@ export default function Register() {
   const onSubmit = (values) => {
     register(values)
       .then((res) => {
+        dispatch(setUserInfo({ email: values.email}));
         login({email:values.email, password:values.password}).then((data) => {
           dispatch(setToken(data.token));
           navigate('/movies');
         }).catch((err) => {
-          console.log(err);
+          alert(err?.message);
         });  
       })
       .catch((err) => {
-        console.log(err);
+        alert(err?.message);
       });
   };
   return (

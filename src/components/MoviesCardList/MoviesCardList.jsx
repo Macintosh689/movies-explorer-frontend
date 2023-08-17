@@ -6,10 +6,10 @@ import Preloader from "../Preloader/Preloader";
 import { useWindowWidth } from "@react-hook/window-size";
 import { useLocation } from "react-router-dom";
 
-export default function MoviesCardList({movies,loading,block,setCountFilms,max}) {
+export default function MoviesCardList({movies,loading,block,setCountFilms,max,saveMovies}) {
   const error = useSelector((state) => state.movie.error);
   const location = useLocation();
-  console.log(movies);
+  
   if (error) {
     return (
       <div className="movies__message">
@@ -26,7 +26,7 @@ export default function MoviesCardList({movies,loading,block,setCountFilms,max})
   ) : (
     <div className="movies__card-list ">
       {movies.map((movie) => (
-        <MoviesCard movie={movie} key={movie.id} />
+        <MoviesCard movie={movie} key={movie.id} saveMovies={saveMovies}/>
       ))}
       {!block && location.pathname === "/movies" &&  (
         <button

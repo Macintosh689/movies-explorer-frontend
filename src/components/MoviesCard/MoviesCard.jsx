@@ -9,29 +9,22 @@ import { getTimeFromMins } from "../../utils/Constants";
 import { useSelector } from "react-redux";
 import { dislikeMovie, getAllLikeMovies, likeMovie } from "../../utils/MainApi";
 
-export default function MoviesCard({ movie }) {
+export default function MoviesCard({ movie, saveMovies }) {
   const location = useLocation();
   const [isLike, setIsLike] = useState(false);
 
   const token = useSelector((state) => state.user.token);
   useEffect(() => {
-    getAllLikeMovies(token)
-      .then((movies) => {
-        if (location.pathname === "/movies") {
-          setIsLike(movies.find((elem) => elem.movieId === movie.id));
-        }else {
-          setIsLike(movies.find((elem) => elem.movieId === movie.movieId));
-        }
-        
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (location.pathname === "/movies") {
+      setIsLike(saveMovies.find((elem) => elem.movieId === movie.id));
+    } else {
+      setIsLike(saveMovies.find((elem) => elem.movieId === movie.movieId));
+    }
   }, [token]);
-console.log(movie);
+  
   function handleLike() {
     if (isLike) {
-      console.log(isLike);
+      
       dislikeMovie(token, isLike._id).then((res) => {
         setIsLike(false);
       });
@@ -50,11 +43,11 @@ console.log(movie);
         nameEN: movie.nameEN,
       })
         .then((res) => {
-          console.log(res);
+          
           setIsLike(res);
         })
         .catch((err) => {
-          console.log(err);
+          alert(err?.message);
         });
     }
   }

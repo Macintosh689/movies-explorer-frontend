@@ -1,24 +1,33 @@
 import React, { useEffect, useState } from "react";
-import Header from '../Header/Header'
-import Footer from '../Footer/Footer'
-import SearchForm from '../SearchForm/SearchForm'
-import MoviesCardList from '../MoviesCardList/MoviesCardList'
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
+import SearchForm from "../SearchForm/SearchForm";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import { useSelector } from "react-redux";
 import { useWindowWidth } from "@react-hook/window-size";
+import { getAllLikeMovies } from "../../utils/MainApi";
+import { laptopCount, laptopMax, laptopWidth, mobileCount, mobileMax, tabletCount, tabletMax, tabletWidth } from "../../utils/Constants";
 
 export default function Movies() {
   const moviesRedux = useSelector((state) => state.movie.allMovies);
   const search = useSelector((state) => state.movie.search);
-  
+
   const short = useSelector((state) => state.movie.short);
   const [movies, setMovies] = useState(new Array(1));
   const [loading, setLoading] = useState(false);
   const [block, setBlock] = useState(false);
   const width = useWindowWidth();
-  const [max, setMax] = useState(3);
-  const [countFilms, setCountFilms] = useState(3);
-  console.log(moviesRedux);
-
+  const [max, setMax] = useState(laptopMax);
+  const [countFilms, setCountFilms] = useState(laptopCount);
+  const [saveMovies, setSaveMovies] = useState([]);
+  const token = useSelector((state) => state.user.token);
+  useEffect(() => {
+    setLoading(true);
+    getAllLikeMovies(token).then((data) => {
+      setSaveMovies(data);
+    });
+    setLoading(false);
+  }, []);
   useEffect(() => {
     if (search.trim() !== "") {
       setLoading(true);
@@ -52,15 +61,15 @@ export default function Movies() {
   }, [movies, countFilms, max]);
 
   useEffect(() => {
-    if (width > 1280) {
-      setMax(3);
-      setCountFilms(12);
-    } else if (width > 681) {
-      setMax(2);
-      setCountFilms(8);
+    if (width > laptopWidth) {
+      setMax(laptopMax);
+      setCountFilms(laptopCount);
+    } else if (width > tabletWidth) {
+      setMax(tabletMax);
+      setCountFilms(tabletCount);
     } else {
-      setMax(1);
-      setCountFilms(5);
+      setMax(mobileMax);
+      setCountFilms(mobileCount);
     }
   }, [width]);
 
@@ -68,8 +77,15 @@ export default function Movies() {
     <>
       <Header />
       <SearchForm />
-      <MoviesCardList movies={movies.slice(0, countFilms)} loading={loading} block={block} setCountFilms={setCountFilms} max={max}/>   
+      <MoviesCardList
+        movies={movies.slice(0, countFilms)}
+        loading={loading}
+        block={block}
+        setCountFilms={setCountFilms}
+        max={max}
+        saveMovies={saveMovies}
+      />
       <Footer />
     </>
-  )
+  );
 }

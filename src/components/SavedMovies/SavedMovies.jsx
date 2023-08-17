@@ -14,34 +14,33 @@ export default function SavedMovies() {
   const token = useSelector((state) => state.user.token);
   useEffect(() => {
     setLoading(true);
-    getAllLikeMovies(token)
-    .then((data) => {
-      console.log(data);
-    setMovies(
-     data.filter((movie) => {
-        if (saveShort) {
-          return (
-            (movie.nameRU.toLowerCase().includes(saveSearch?.toLowerCase()) &&
-              movie.duration <= 40) ||
-            (movie.nameEN.toLowerCase().includes(saveSearch?.toLowerCase()) &&
-              movie.duration <= 40)
-          );
-        } else {
-          return (
-            movie.nameRU.toLowerCase().includes(saveSearch?.toLowerCase()) ||
-            movie.nameEN.toLowerCase().includes(saveSearch?.toLowerCase())
-          );
-        }
-      })
-    );})
+    getAllLikeMovies(token).then((data) => {
+      setMovies(
+        data.filter((movie) => {
+          if (saveShort) {
+            return (
+              (movie.nameRU.toLowerCase().includes(saveSearch?.toLowerCase()) &&
+                movie.duration <= 40) ||
+              (movie.nameEN.toLowerCase().includes(saveSearch?.toLowerCase()) &&
+                movie.duration <= 40)
+            );
+          } else {
+            return (
+              movie.nameRU.toLowerCase().includes(saveSearch?.toLowerCase()) ||
+              movie.nameEN.toLowerCase().includes(saveSearch?.toLowerCase())
+            );
+          }
+        })
+      );
+    });
     setLoading(false);
   }, [saveSearch, saveShort]);
-  console.log(movies);
+
   return (
     <div>
       <Header />
       <SearchForm />
-      <MoviesCardList  movies={movies} loading={loading}/>
+      <MoviesCardList movies={movies} loading={loading} saveMovies={movies} />
       <Footer />
     </div>
   );

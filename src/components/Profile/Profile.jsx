@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import "./profile.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setToken } from "../../redux/slices/userReducer";
+import { setToken, setUserInfo } from "../../redux/slices/userReducer";
 import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -11,20 +11,23 @@ import { editUserInfo, getUserInfo } from "../../utils/MainApi";
 
 export default function Profile() {
   const token = useSelector((state) => state.user.token);
-  const [userInfo, setUserInfo] = useState({});
+  const userInfo = useSelector((state) => state.user.userInfo);
   const dispatch = useDispatch();
   useEffect(() => {
-    getUserInfo(token)
-      .then((res) => {
-        setUserInfo(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (!userInfo) {
+      getUserInfo(token)
+        .then((res) => {
+          dispatch(setUserInfo(res));
+        })
+        .catch((err) => {
+          alert(err?.message);
+        });
+    }
   }, []);
   function logout(event) {
     event.preventDefault();
     dispatch(setToken(""));
+    localStorage.removeItem("preloaded");
   }
   const emailSchema =
     /^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$/;
@@ -46,11 +49,11 @@ export default function Profile() {
   const onSubmit = (values) => {
     editUserInfo(token, values)
       .then((data) => {
-        console.log(data);
+        dispatch(setUserInfo(data));
         alert("Сохранено");
       })
       .catch((err) => {
-        console.log(err);
+        alert(err?.message);
       });
   };
   return (
