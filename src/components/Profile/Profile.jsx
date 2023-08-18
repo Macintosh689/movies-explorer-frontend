@@ -2,19 +2,20 @@ import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import "./profile.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setToken, setUserInfo } from "../../redux/slices/userReducer";
+import { clearUser, setToken, setUserInfo } from "../../redux/slices/userReducer";
 import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 
 import { Form, Formik, Field, ErrorMessage } from "formik";
 import { editUserInfo, getUserInfo } from "../../utils/MainApi";
+import { clearMovie } from "../../redux/slices/movieReducer";
 
 export default function Profile() {
   const token = useSelector((state) => state.user.token);
   const userInfo = useSelector((state) => state.user.userInfo);
   const dispatch = useDispatch();
   useEffect(() => {
-    if (!userInfo) {
+    if (!Object.keys(userInfo).length) {
       getUserInfo(token)
         .then((res) => {
           dispatch(setUserInfo(res));
@@ -26,8 +27,8 @@ export default function Profile() {
   }, []);
   function logout(event) {
     event.preventDefault();
-    dispatch(setToken(""));
-    localStorage.removeItem("preloaded");
+    dispatch(clearUser());
+    dispatch(clearMovie());
   }
   const emailSchema =
     /^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$/;

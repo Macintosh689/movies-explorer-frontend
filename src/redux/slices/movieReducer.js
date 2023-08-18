@@ -31,11 +31,18 @@ export const moviesSlice = createSlice({
       setSaveShort: (state, action) => {
          state.saveShort=action.payload
       },
-
+      clearMovie:(state, action) => {
+         state.allMovies= [];
+         state.search= '';
+         state.error = false;
+         state.short = false;
+         state.saveSearch= '';
+         state.saveShort= false;
+      }
    }
 })
 
 
 export default moviesSlice.reducer
 
-export const{setAllMovies, setSearch, setError, setShort, setSaveSearch, setSaveShort} = moviesSlice.actions
+export const{setAllMovies, setSearch, setError, setShort, setSaveSearch, setSaveShort,clearMovie} = moviesSlice.actions

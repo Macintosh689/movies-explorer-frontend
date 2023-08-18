@@ -34,10 +34,12 @@ export default function Login() {
     login({ email: values.email, password: values.password })
       .then((data) => {
         dispatch(setToken(data.token));
-        navigate("/movies");
+        setTimeout(()=> {
+          navigate('/movies');
+        }, 0);
       })
       .catch((err) => {
-        alert(err?.message);
+        alert(err);
       });
   };
   return (

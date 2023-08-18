@@ -82,6 +82,11 @@
   margin-top: 134px;
 }
 
+.auth-form__button_type_register:disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
 @media screen and (max-width: 767px) {
   .auth-form__button_type_register {
     font-size: 12px;
