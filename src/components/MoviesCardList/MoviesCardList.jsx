@@ -25,8 +25,8 @@ export default function MoviesCardList({movies,loading,block,setCountFilms,max,s
     <Preloader />
   ) : (
     <div className="movies__card-list ">
-      {movies.map((movie) => (
-        <MoviesCard movie={movie} key={movie.id} saveMovies={saveMovies}/>
+      {movies.map((movie, index) => (
+        <MoviesCard movie={movie} key={index} saveMovies={saveMovies}/>
       ))}
       {!block && location.pathname === "/movies" &&  (
         <button

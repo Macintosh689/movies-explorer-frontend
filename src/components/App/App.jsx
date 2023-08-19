@@ -18,6 +18,7 @@ export default function App() {
   const movies = useSelector((state) => state.movie.allMovies);
   useEffect(() => {
     if (!movies.length) {
+
       getAllMovies().then((movies) => {
         dispatch(setAllMovies(movies));
         dispatch(setError(false));
@@ -25,7 +26,7 @@ export default function App() {
         dispatch(setError(true));
       })
     }
-  }, []);
+  }, [movies]);
   return (
     <div className="page">
       <Routes>

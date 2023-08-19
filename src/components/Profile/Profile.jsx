@@ -15,7 +15,7 @@ export default function Profile() {
   const userInfo = useSelector((state) => state.user.userInfo);
   const dispatch = useDispatch();
   useEffect(() => {
-    if (!Object.keys(userInfo).length) {
+    if (!userInfo.name || !userInfo.email) {
       getUserInfo(token)
         .then((res) => {
           dispatch(setUserInfo(res));
