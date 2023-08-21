@@ -1,37 +1,37 @@
 import React, { useState } from "react";
 import "./searchForm.css";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setSaveSearch,
-  setSaveShort,
-  setSearch,
-  setShort,
-} from "../../redux/slices/movieReducer";
+import { setSearch, setShort } from "../../redux/slices/movieReducer";
 import { useLocation } from "react-router-dom";
 
-export default function SearchForm() {
+export default function SearchForm({
+  saveSearch,
+  setSaveSearch,
+  saveShort,
+  setSaveShort,
+}) {
   const location = useLocation();
   const search = useSelector((state) => state.movie.search);
   const short = useSelector((state) => state.movie.short);
-  const saveSearch = useSelector((state) => state.movie.saveSearch);
-  const saveShort = useSelector((state) => state.movie.saveShort);
+
   const [value, setValue] = useState(
     location.pathname === "/movies" ? search : saveSearch
   );
+
   const dispatch = useDispatch();
   function handleSearch(event) {
     event.preventDefault();
     if (location.pathname === "/movies") {
       dispatch(setSearch(value));
     } else {
-      dispatch(setSaveSearch(value));
+      setSaveSearch(value);
     }
   }
   function handleCheck(event) {
     if (location.pathname === "/movies") {
       dispatch(setShort(short ? false : true));
     } else {
-      dispatch(setSaveShort(saveShort ? false : true));
+      setSaveShort((prev) => !prev);
     }
   }
 
@@ -54,7 +54,7 @@ export default function SearchForm() {
           type="checkbox"
           id="toggle-slider"
           className="search-form__toggle-input"
-          checked={location.pathname === "/movies" ? short :saveShort}
+          checked={location.pathname === "/movies" ? short : saveShort}
           onChange={handleCheck}
         />
         <label htmlFor="toggle-slider" className="search-form__toggle-label">

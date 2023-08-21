@@ -6,7 +6,16 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import { useSelector } from "react-redux";
 import { useWindowWidth } from "@react-hook/window-size";
 import { getAllLikeMovies } from "../../utils/MainApi";
-import { laptopCount, laptopMax, laptopWidth, mobileCount, mobileMax, tabletCount, tabletMax, tabletWidth } from "../../utils/Constants";
+import {
+  laptopCount,
+  laptopMax,
+  laptopWidth,
+  mobileCount,
+  mobileMax,
+  tabletCount,
+  tabletMax,
+  tabletWidth,
+} from "../../utils/Constants";
 
 export default function Movies() {
   const moviesRedux = useSelector((state) => state.movie.allMovies);
@@ -21,6 +30,7 @@ export default function Movies() {
   const [countFilms, setCountFilms] = useState(laptopCount);
   const [saveMovies, setSaveMovies] = useState([]);
   const token = useSelector((state) => state.user.token);
+
   useEffect(() => {
     setLoading(true);
     getAllLikeMovies(token).then((data) => {

@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Header from "../Header/Header";
 import "./profile.css";
 import { useDispatch, useSelector } from "react-redux";
-import { clearUser, setToken, setUserInfo } from "../../redux/slices/userReducer";
+import { clearUser, setUserInfo } from "../../redux/slices/userReducer";
 import * as Yup from "yup";
-import { Link, useNavigate } from "react-router-dom";
 
 import { Form, Formik, Field, ErrorMessage } from "formik";
 import { editUserInfo, getUserInfo } from "../../utils/MainApi";
@@ -15,7 +14,7 @@ export default function Profile() {
   const userInfo = useSelector((state) => state.user.userInfo);
   const dispatch = useDispatch();
   useEffect(() => {
-    if (!userInfo.name || !userInfo.email) {
+    if (!userInfo?.name || !userInfo?.email) {
       getUserInfo(token)
         .then((res) => {
           dispatch(setUserInfo(res));

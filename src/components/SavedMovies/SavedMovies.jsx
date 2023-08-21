@@ -7,39 +7,55 @@ import { useSelector } from "react-redux";
 import { getAllLikeMovies } from "../../utils/MainApi";
 
 export default function SavedMovies() {
-  const saveSearch = useSelector((state) => state.movie.saveSearch);
-  const saveShort = useSelector((state) => state.movie.saveShort);
   const [movies, setMovies] = useState(new Array(1));
   const [loading, setLoading] = useState(false);
+
+  const [saveSearch, setSaveSearch] = useState("");
+  const [saveShort, setSaveShort] = useState(false);
+
+  const [savedMovies, setSavedMovies] = useState([]);
+
   const token = useSelector((state) => state.user.token);
   useEffect(() => {
     setLoading(true);
     getAllLikeMovies(token).then((data) => {
-      setMovies(
-        data.filter((movie) => {
-          if (saveShort) {
-            return (
-              (movie.nameRU.toLowerCase().includes(saveSearch?.toLowerCase()) &&
-                movie.duration <= 40) ||
-              (movie.nameEN.toLowerCase().includes(saveSearch?.toLowerCase()) &&
-                movie.duration <= 40)
-            );
-          } else {
-            return (
-              movie.nameRU.toLowerCase().includes(saveSearch?.toLowerCase()) ||
-              movie.nameEN.toLowerCase().includes(saveSearch?.toLowerCase())
-            );
-          }
-        })
-      );
+      setSavedMovies(data);
     });
     setLoading(false);
-  }, [saveSearch, saveShort]);
+  }, []);
+
+  useEffect(() => {
+    setLoading(true);
+    setMovies(
+      savedMovies.filter((movie) => {
+        if (saveShort) {
+          return (
+            (movie.nameRU.toLowerCase().includes(saveSearch?.toLowerCase()) &&
+              movie.duration <= 40) ||
+            (movie.nameEN.toLowerCase().includes(saveSearch?.toLowerCase()) &&
+              movie.duration <= 40)
+          );
+        } else {
+          return (
+            movie.nameRU.toLowerCase().includes(saveSearch?.toLowerCase()) ||
+            movie.nameEN.toLowerCase().includes(saveSearch?.toLowerCase())
+          );
+        }
+      })
+    );
+
+    setLoading(false);
+  }, [savedMovies, saveSearch, saveShort]);
 
   return (
     <div>
       <Header />
-      <SearchForm />
+      <SearchForm
+        saveSearch={saveSearch}
+        setSaveSearch={setSaveSearch}
+        saveShort={saveShort}
+        setSaveShort={setSaveShort}
+      />
       <MoviesCardList movies={movies} loading={loading} saveMovies={movies} />
       <Footer />
     </div>
