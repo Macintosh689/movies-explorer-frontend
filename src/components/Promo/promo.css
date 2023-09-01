@@ -1,0 +1,140 @@
+.promo {
+   background-color: #073042;
+   padding: 75px 70px;
+   display: flex;
+   justify-content: space-between;
+ }
+ 
+ @media screen and (min-width: 768px) and (max-width: 1024px) {
+   .promo {
+     flex-direction: column-reverse;
+     padding: 140px 44px 76px;
+   }
+ }
+ 
+ @media screen and (max-width: 767px){
+   .promo {
+     flex-direction: column-reverse;
+     padding: 70px 10px 30px;
+   }
+ }
+ 
+ @media screen and (min-width: 768px) and (max-width: 1024px) {
+   .promo__container {
+     display: flex;
+     flex-direction: column;
+   }
+ }
+ 
+ @media screen and (max-width: 767px){
+   .promo__container {
+     display: flex;
+     flex-direction: column;
+   }
+ }
+ 
+ .promo__title {
+   color: #fff;
+   font-size: 50px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: 58px;
+   padding: 0;
+   margin: 0 0 36px 0;
+   max-width: 640px;
+ }
+ 
+ @media screen and (min-width: 768px) and (max-width: 1024px) {
+   .promo__title {
+     text-align: center;
+     font-size: 40px;
+     line-height: 50px;
+     margin: 0 auto 22px;
+   }
+ }
+ 
+ @media screen and (max-width: 767px){
+   .promo__title {
+     font-size: 30px;
+     line-height: 38px;
+     letter-spacing: -1.2px;
+     text-align: center;
+     margin: 0 auto 24px;
+   }
+ }
+ 
+ .promo__subtitle {
+   color: #fff;
+   font-size: 13px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: normal;
+   margin: 0 0 146px 0;
+   opacity: 0.5;
+   max-width: 310px;
+ }
+ 
+ @media screen and (min-width: 768px) and (max-width: 1024px) {
+   .promo__subtitle {
+     text-align: center;
+     font-size: 13px;
+     font-style: normal;
+     font-weight: 400;
+     line-height: normal;
+     margin: 0 auto 92px;
+   }
+ }
+ 
+ @media screen and (max-width: 767px){
+   .promo__subtitle {
+     margin: 0 auto 80px;
+     text-align: center;
+     max-width: 260px;;
+   }
+ }
+ 
+ .promo__button {
+   color: #fff;
+   font-size: 12px;
+   font-style: normal;
+   font-weight: 500;
+   line-height: 16px;
+   border-radius: 3px;
+   border: 1px solid rgba(255, 255, 255, 0.6);
+   background-color: transparent;
+   padding: 10px 20px;
+   cursor: pointer;
+   display: block;
+ }
+ 
+ @media screen and (min-width: 768px) and (max-width: 1024px) {
+   .promo__button {
+     margin: 0 auto;
+   }
+ }
+ 
+ @media screen and (max-width: 767px){
+   .promo__button {
+     margin: 0 auto;
+   }
+ }
+ 
+ .promo__image {
+   width: 310px;
+   height: 304px;
+   flex-shrink: 0;
+ }
+ 
+ @media screen and (min-width: 768px) and (max-width: 1024px) {
+   .promo__image {
+     margin: 0 auto 48px;
+   }
+ }
+ 
+ @media screen and (max-width: 767px){
+   .promo__image {
+     width: 210px;
+     height: 206px;
+     margin: 0 auto 44px;
+   }
+ }

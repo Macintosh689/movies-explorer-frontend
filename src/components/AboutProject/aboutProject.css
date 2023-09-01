@@ -1,0 +1,165 @@
+.about {
+   background-color: #202020;
+   padding: 110px 70px;
+ }
+ 
+ @media screen and (min-width: 768px) and (max-width: 1024px) {
+   .about {
+     padding: 90px 50px;
+   }
+ }
+ 
+ @media screen and (max-width: 767px){
+   .about {
+     padding: 70px 18px;
+   }
+ }
+ 
+ .section__title {
+   color: #fff;
+   font-size: 22px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: normal;
+   letter-spacing: -0.8px;
+   padding: 0 0 23px 0;
+   margin: 0;
+   border-bottom: 1px solid #dadada;
+ }
+ 
+ @media screen and (max-width: 767px){
+   .section__title {
+     font-size: 18px;
+     letter-spacing: -0.72px;
+     padding: 0 0 28px 0;
+   }
+ }
+ 
+ .about__list {
+   display: grid;
+   grid-template-columns: auto auto;
+   grid-column-gap: 40px;
+   padding: 70px 0 110px;
+   margin: 0;
+ }
+ 
+ @media screen and (min-width: 768px) and (max-width: 1024px) {
+   .about__list {
+     padding: 70px 0 93px;
+   }
+ }
+ 
+ @media screen and (max-width: 767px){
+   .about__list {
+     padding: 60px 0;
+     grid-template-columns: auto;
+     gap: 56px;
+   }
+ }
+ 
+ .about__list-item {
+   list-style-type: none;
+ }
+ .about__heading {
+   color: #fff;
+   font-size: 20px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: normal;
+   letter-spacing: -0.8px;
+   margin: 0;
+   padding: 0;
+ }
+ 
+ @media screen and (max-width: 767px){
+   .about__heading {
+     font-size: 18px;
+     letter-spacing: -0.72px;
+   }
+ }
+ 
+ .about__text {
+   color: #fff;
+   font-size: 14px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: 20px;
+   margin: 26px 0 0;
+   padding: 0;
+ }
+ 
+ @media screen and (min-width: 768px) and (max-width: 1024px) {
+   .about__text {
+     font-size: 12px;
+     line-height: 18px;
+     margin: 22px 0 0;
+   }
+ }
+ 
+ @media screen and (max-width: 767px){
+   .about__text {
+     margin: 16px 0 0;
+     font-size: 11px;
+     line-height: 16px;
+   }
+ }
+ 
+ .about__deadline {
+   display: grid;
+   grid-template-columns: 1fr 4fr;
+   margin: 0;
+   padding: 0;
+ }
+ 
+ @media screen and (max-width: 767px){
+   .about__deadline {
+     grid-template-columns: 100px 1fr;
+   }
+ }
+ 
+ .about__deadline-heading {
+   color: #000;
+   text-align: center;
+   font-size: 14px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: normal;
+   max-width: 200px;
+   background-color: #3ddc84;
+   padding: 9px 14px;
+   margin: 0 0 14px;
+ }
+ 
+ @media screen and (max-width: 767px){
+   .about__deadline-heading {
+     font-size: 11px;
+     margin: 0 0 10px;
+   }
+ }
+ 
+ .about__deadline-heading_type_long {
+   background-color: #303030;
+   max-width: 912px;
+   color: #fff;
+   text-align: center;
+   font-size: 14px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: normal;
+ }
+ .about__deadline-text {
+   margin: 0;
+   padding: 0;
+   color: #8b8b8b;
+   text-align: center;
+   font-size: 14px;
+   font-style: normal;
+   font-weight: 500;
+   line-height: 17px;
+ }
+ 
+ @media screen and (max-width: 767px){
+   .about__deadline-text {
+     font-size: 11px;
+   }
+ }

@@ -1,0 +1,111 @@
+.techs {
+   background-color: #272727;
+   padding: 100px 70px;
+ }
+ 
+ @media screen and (min-width: 768px) and (max-width: 1024px) {
+   .techs {
+     padding: 90px 50px;
+   }
+ }
+ 
+ 
+ @media screen and (max-width: 767px){
+   .techs {
+     padding: 60px 14px 70px;
+     background-color: #202020;
+   }
+ }
+ 
+ 
+ .techs__heading {
+   color: #fff;
+   text-align: center;
+   font-size: 50px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: 58px;
+   letter-spacing: -2px;
+   margin: 90px 0 26px;
+ }
+ 
+ @media screen and (min-width: 768px) and (max-width: 1024px) {
+   .techs__heading {
+     margin: 80px 22px;
+   }
+ }
+ 
+ @media screen and (max-width: 767px){
+   .techs__heading {
+     font-size: 30px;
+     letter-spacing: -1.2px;
+     line-height: normal;
+   }
+ }
+ 
+ .techs__text {
+   color: #fff;
+   text-align: center;
+   font-size: 14px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: 20px;
+   letter-spacing: -0.56px;
+   margin: 0 auto 100px;
+   max-width: 460px;
+ }
+ 
+ @media screen and (min-width: 768px) and (max-width: 1024px) {
+   .techs__text {
+     font-size: 12px;
+     line-height: 18px;
+     letter-spacing: -0.48px;
+     margin: 0 auto 83px;
+   }
+ }
+ 
+ @media screen and (max-width: 767px){
+   .techs__text {
+     font-size: 11px;
+     line-height: 16px;
+     letter-spacing: -0.44px;
+   }
+ }
+ 
+ .techs__list {
+   display: flex;
+   gap: 10px;
+   margin: 0;
+   padding: 0;
+   justify-content: center;
+ }
+ 
+ @media screen and (max-width: 767px){
+   .techs__list {
+     display: grid;
+     grid-template-columns: repeat(2, 90px);
+     
+   }
+ }
+ 
+ .techs__list-item {
+   list-style-type: none;
+   width: 90px;
+   padding: 22px 0;
+   color: #fff;
+   text-align: center;
+   font-size: 14px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: normal;
+   letter-spacing: -0.56px;
+   border-radius: 10px;
+   background: #303030;
+ }
+ 
+ @media screen and (min-width: 768px) and (max-width: 1024px) {
+   .techs__list-item {
+     font-size: 12px;
+     letter-spacing: -0.48px;
+   }
+ }
